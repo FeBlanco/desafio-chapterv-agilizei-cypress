@@ -1,42 +1,31 @@
-name: Testes
+name: ci
+on: 
 
-# Gatilhos
-#   Programados
-#   Acionados por eventos
-on:
+  # execucacao por eventos
   push:
-    branches: [ main ]
-
+    branches:
+      - main
+  
+  # execucao programada
+  schedule:
+    - cron:  '00 12 11 * 1'
+    
+  # execucao manual  
+  workflow_dispatch:
+  
 jobs:
-  build:
-#   Máquina ou ambiente
+  test:
     runs-on: ubuntu-latest
-
-#   Passos
+    
     steps:
-    
-#   Donwload do código
-    - uses: actions/checkout@v2
-    
-# Setup da versão do Node
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: 16.x
-        
-#  Instalacão das dependecias e execucão
-    - run: npm install
-    - run: npm run cy:run
-      continue-on-error: true
-      
-    - run: npm run report:merge
-    
-    - run: npm run report:mocha
-    
-#  Github Pages -> publicar o relatório
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.7
-      with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: mochawesome-report
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Run E2E & UI tests
+        uses: cypress-io/github-action@v2
+          
+      - name: Upload a Build Artifact
+        if: always()
+        uses: actions/upload-artifact@v2.2.4
+        with:
+          path: cypress/videos
