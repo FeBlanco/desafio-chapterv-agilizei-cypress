@@ -1,0 +1,10 @@
+{
+    "user": {
+       "email": "belo@mail.com",
+       "username": "Aldo",
+       "bio": null,
+       "image": "https://api.realworld.io/images/smiley-cyrus.jpeg",
+       "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJlbG9AbWFpbC5jb20iLCJ1c2VybmFtZSI6IkFsZG8iLCJpYXQiOjE2NjUxMDc4MDAsImV4cCI6MTY3MDI5MTgwMH0.9GKK_KhGapEeXOcYqcDWpFAqXWybzM_gMq5xvQkk_a4"
+       }
+   }
+

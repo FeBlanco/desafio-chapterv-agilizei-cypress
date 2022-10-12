@@ -1,0 +1,10 @@
+{
+    "$schema": "http://on.cypress.io/cypress.schema.json",
+    "integrationFolder": "cypress/tests",
+    "baseUrl": "https://demo.realworld.io/#/",
+    "defaultCommandTimeout": 40000,
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"
+    }
+}
